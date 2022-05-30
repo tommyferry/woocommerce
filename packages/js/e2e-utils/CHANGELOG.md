@@ -21,6 +21,7 @@
 
 ## Changed
 - Removed `faker` dependency
+- Updated `@wordpress/e2e-test-utils` to `wp-5.8: 5.3.2`
 
 # 0.1.7
 
