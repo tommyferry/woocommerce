@@ -763,14 +763,14 @@ importers:
       '@wordpress/babel-preset-default': 3.0.2
       '@wordpress/browserslist-config': ^4.1.0
       '@wordpress/deprecated': ^3.2.3
-      '@wordpress/e2e-test-utils': ^4.16.1
+      '@wordpress/e2e-test-utils': wp-5.8
       config: 3.3.3
       eslint: ^8.1.0
       fishery: ^1.2.0
     dependencies:
       '@automattic/puppeteer-utils': github.com/Automattic/puppeteer-utils/0f3ec50
       '@wordpress/deprecated': 3.2.3
-      '@wordpress/e2e-test-utils': 4.16.1_jest@27.3.1
+      '@wordpress/e2e-test-utils': 5.3.2_jest@27.3.1
       config: 3.3.3
       fishery: 1.4.0
     devDependencies:
@@ -13760,7 +13760,6 @@ packages:
       re-resizable: 4.11.0
     transitivePeerDependencies:
       - react
-      - react-dom
     dev: true
 
   /@types/wordpress__compose/4.0.1:
@@ -15732,21 +15731,21 @@ packages:
       - react-native
     dev: false
 
-  /@wordpress/e2e-test-utils/4.16.1_jest@27.3.1:
-    resolution: {integrity: sha512-Dpsq5m0VSvjIhro2MjACSzkOkOf1jGEryzgEMW1ikbT6YI+motspHfGtisKXgYhZJOnjV4PwuEg+9lPVnd971g==}
-    engines: {node: '>=8'}
+  /@wordpress/e2e-test-utils/5.3.2_jest@27.3.1:
+    resolution: {integrity: sha512-K44fl1Fgh2kk2RV14BDFSr2QVa5F2aeZ3IOyvLYo1OqaTD2pxXbdQDL1U4wvbkXxAoub4fsF0ugAYYyvxyLIvw==}
+    engines: {node: '>=12'}
     peerDependencies:
-      jest: '>=24'
+      jest: '>=26'
       puppeteer: '>=1.19.0'
     dependencies:
-      '@babel/runtime': 7.15.4
-      '@wordpress/keycodes': 2.19.3
-      '@wordpress/url': 2.22.2
+      '@babel/runtime': 7.17.7
+      '@wordpress/keycodes': 3.4.1
+      '@wordpress/url': 3.5.1
       jest: 27.3.1
       lodash: 4.17.21
-      node-fetch: 2.6.5
+      node-fetch: 2.6.7
     transitivePeerDependencies:
-      - react-native
+      - encoding
     dev: false
 
   /@wordpress/element/2.20.3:
@@ -18880,7 +18879,7 @@ packages:
     dev: true
 
   /camelcase/4.1.0:
-    resolution: {integrity: sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=}
+    resolution: {integrity: sha512-FxAv7HpHrXbh3aPo4o2qxHay2lkLY3x5Mw3KeE4KQE8ysVfziWeRZDwcjauvwBSGEC/nXUPzZy8zeh4HokqOnw==}
     engines: {node: '>=4'}
     dev: true
 
@@ -20129,7 +20128,7 @@ packages:
       postcss-value-parser: 4.2.0
       schema-utils: 2.7.1
       semver: 6.3.0
-      webpack: 5.70.0
+      webpack: 5.70.0_webpack-cli@3.3.12
 
   /css-loader/5.2.7_webpack@5.70.0:
     resolution: {integrity: sha512-Q7mOvpBNBG7YrVGMxRxcBJZFL75o+cH2abNASdibkj/fffYD8qWbInZrD0S9ccI6vZclF3DsHE7njGlLtaHbhg==}
@@ -20884,7 +20883,7 @@ packages:
     dev: true
 
   /detect-newline/2.1.0:
-    resolution: {integrity: sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I=}
+    resolution: {integrity: sha512-CwffZFvlJffUg9zZA0uqrjQayUTC8ob94pnr5sFwaVv3IOmkfUHcWH+jXaQK3askE51Cqe8/9Ql/0uXNwqZ8Zg==}
     engines: {node: '>=0.10.0'}
     dev: false
 
@@ -22909,7 +22908,7 @@ packages:
     dev: true
 
   /execa/0.7.0:
-    resolution: {integrity: sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c=}
+    resolution: {integrity: sha512-RztN09XglpYI7aBBrJCPW95jEH7YF1UEPOoX9yDhUTPdp7mK+CQvnLTuD10BNXZ3byLTu2uehZ8EcKT/4CGiFw==}
     engines: {node: '>=4'}
     dependencies:
       cross-spawn: 5.1.0
@@ -23295,7 +23294,7 @@ packages:
     dev: true
 
   /fd-slicer/1.1.0:
-    resolution: {integrity: sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=}
+    resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
     dependencies:
       pend: 1.2.0
 
@@ -25578,7 +25577,7 @@ packages:
     engines: {node: '>= 4'}
 
   /image-size/0.5.5:
-    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -37246,7 +37245,7 @@ packages:
       serialize-javascript: 6.0.0
       source-map: 0.6.1
       terser: 5.10.0_acorn@8.7.0
-      webpack: 5.70.0
+      webpack: 5.70.0_webpack-cli@3.3.12
     transitivePeerDependencies:
       - acorn
     dev: true
