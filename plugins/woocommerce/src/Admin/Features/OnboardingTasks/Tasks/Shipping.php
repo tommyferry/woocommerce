@@ -2,6 +2,7 @@
 
 namespace Automattic\WooCommerce\Admin\Features\OnboardingTasks\Tasks;
 
+use Automattic\WooCommerce\Admin\Features\Features;
 use Automattic\WooCommerce\Internal\Admin\Onboarding\OnboardingProfile;
 use Automattic\WooCommerce\Admin\Features\OnboardingTasks\Task;
 use WC_Data_Store;
@@ -76,7 +77,7 @@ class Shipping extends Task {
 	 * @return bool
 	 */
 	public function can_view() {
-		return self::has_physical_products();
+		return Features::is_enabled( 'shipping-smart-defaults' ) ? true : self::has_physical_products();
 	}
 
 	/**
