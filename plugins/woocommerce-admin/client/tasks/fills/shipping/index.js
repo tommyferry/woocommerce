@@ -195,6 +195,53 @@ export class Shipping extends Component {
 		const requiresJetpackConnection =
 			! isJetpackConnected && countryCode === 'US';
 
+		const shippingSmartDefaultsEnabled =
+			window.wcAdminFeatures &&
+			window.wcAdminFeatures[ 'shipping-smart-defaults' ];
+
+		let shippingRatesButtonText;
+		let labelPrintingDescription;
+		if ( shippingSmartDefaultsEnabled ) {
+			shippingRatesButtonText = __(
+				'Save shipping options',
+				'woocommerce'
+			);
+			labelPrintingDescription = __(
+				'Save time and fulfill your orders with WooCommerce Shipping. You can manage it at any time in WooCommerce Shipping Settings.',
+				'woocommerce'
+			);
+		} else {
+			shippingRatesButtonText =
+				pluginsToActivate.length || requiresJetpackConnection
+					? __( 'Proceed', 'woocommerce' )
+					: __( 'Complete task', 'woocommerce' );
+
+			labelPrintingDescription = pluginsToActivate.includes(
+				'woocommerce-shipstation-integration'
+			)
+				? interpolateComponents( {
+						mixedString: __(
+							'We recommend using ShipStation to save time at the post office by printing your shipping ' +
+								'labels at home. Try ShipStation free for 30 days. {{link}}Learn more{{/link}}.',
+							'woocommerce'
+						),
+						components: {
+							link: (
+								<Link
+									href="https://woocommerce.com/products/shipstation-integration?utm_medium=product"
+									target="_blank"
+									type="external"
+								/>
+							),
+						},
+				  } )
+				: __(
+						'With WooCommerce Shipping you can save time ' +
+							'by printing your USPS and DHL Express shipping labels at home',
+						'woocommerce'
+				  );
+		}
+
 		const steps = [
 			{
 				key: 'store_location',
@@ -225,19 +272,21 @@ export class Shipping extends Component {
 			},
 			{
 				key: 'rates',
-				label: __( 'Set shipping costs', 'woocommerce' ),
-				description: __(
-					'Define how much customers pay to ship to different destinations',
-					'woocommerce'
-				),
+				label: shippingSmartDefaultsEnabled
+					? __( 'Review your shipping options', 'woocommerce' )
+					: __( 'Set shipping costs', 'woocommerce' ),
+				description: shippingSmartDefaultsEnabled
+					? __(
+							'We recommend the following shipping options based on your location. You can manage your shipping options again at any time in WooCommerce Shipping settings.',
+							'woocommerce'
+					  )
+					: __(
+							'Define how much customers pay to ship to different destinations',
+							'woocommerce'
+					  ),
 				content: (
 					<ShippingRates
-						buttonText={
-							pluginsToActivate.length ||
-							requiresJetpackConnection
-								? __( 'Proceed', 'woocommerce' )
-								: __( 'Complete task', 'woocommerce' )
-						}
+						buttonText={ shippingRatesButtonText }
 						shippingZones={ this.state.shippingZones }
 						onComplete={ () => {
 							const { id } = task;
@@ -255,31 +304,13 @@ export class Shipping extends Component {
 			},
 			{
 				key: 'label_printing',
-				label: __( 'Enable shipping label printing', 'woocommerce' ),
-				description: pluginsToActivate.includes(
-					'woocommerce-shipstation-integration'
-				)
-					? interpolateComponents( {
-							mixedString: __(
-								'We recommend using ShipStation to save time at the post office by printing your shipping ' +
-									'labels at home. Try ShipStation free for 30 days. {{link}}Learn more{{/link}}.',
-								'woocommerce'
-							),
-							components: {
-								link: (
-									<Link
-										href="https://woocommerce.com/products/shipstation-integration?utm_medium=product"
-										target="_blank"
-										type="external"
-									/>
-								),
-							},
-					  } )
-					: __(
-							'With WooCommerce Shipping you can save time ' +
-								'by printing your USPS and DHL Express shipping labels at home',
+				label: shippingSmartDefaultsEnabled
+					? __(
+							'Enable shipping label printing and discounted rates',
 							'woocommerce'
-					  ),
+					  )
+					: __( 'Enable shipping label printing', 'woocommerce' ),
+				description: labelPrintingDescription,
 				content: (
 					<Plugins
 						onComplete={ ( plugins, response ) => {
