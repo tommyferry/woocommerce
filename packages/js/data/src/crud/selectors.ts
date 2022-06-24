@@ -20,8 +20,13 @@ export const createSelectors = ( {
 	resourceName,
 	pluralResourceName,
 }: SelectorOptions ) => {
-    const getCreateItemError = ( state: ResourceState, query: ItemQuery ) => {
+	const getCreateItemError = ( state: ResourceState, query: ItemQuery ) => {
 		const itemQuery = getResourceName( CRUD_ACTIONS.CREATE_ITEM, query );
+		return state.errors[ itemQuery ];
+	};
+
+	const getDeleteItemError = ( state: ResourceState, id: number ) => {
+		const itemQuery = getResourceName( CRUD_ACTIONS.DELETE_ITEM, { id } );
 		return state.errors[ itemQuery ];
 	};
 
@@ -47,7 +52,7 @@ export const createSelectors = ( {
 			}
 
 			if ( query._fields ) {
-				return ids.map( ( id: number ) => {
+				return ids.map( ( id: string ) => {
 					return query._fields.reduce(
 						( item: Partial< Item >, field: string ) => {
 							return {
@@ -60,7 +65,7 @@ export const createSelectors = ( {
 				} );
 			}
 
-			return ids.map( ( id: number ) => {
+			return ids.map( ( id: string ) => {
 				return state.data[ id ];
 			} );
 		},
@@ -71,7 +76,7 @@ export const createSelectors = ( {
 				: undefined;
 			return [
 				state.items[ itemQuery ],
-				...( ids || [] ).map( ( id: number ) => {
+				...( ids || [] ).map( ( id: string ) => {
 					return state.data[ id ];
 				} ),
 			];
@@ -83,7 +88,7 @@ export const createSelectors = ( {
 		return state.errors[ itemQuery ];
 	};
 
-    const getUpdateItemError = ( state: ResourceState, id: number ) => {
+	const getUpdateItemError = ( state: ResourceState, id: string ) => {
 		const itemQuery = getResourceName( CRUD_ACTIONS.UPDATE_ITEM, { id } );
 		return state.errors[ itemQuery ];
 	};
@@ -94,6 +99,7 @@ export const createSelectors = ( {
 		[ `get${ pluralResourceName }` ]: getItems,
 		[ `get${ pluralResourceName }Error` ]: getItemsError,
 		[ `getCreate${ resourceName }Error` ]: getCreateItemError,
+		[ `getDelete${ resourceName }Error` ]: getDeleteItemError,
 		[ `getUpdate${ resourceName }Error` ]: getUpdateItemError,
 	};
 };
