@@ -2,3 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 ./bin/pre-push.sh
+
+pnpm exec lint-staged

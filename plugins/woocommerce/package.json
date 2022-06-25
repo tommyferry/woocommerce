@@ -84,7 +84,7 @@
 	"lint-staged": {
 		"*.php": [
 			"php -d display_errors=1 -l",
-			"composer run-script phpcs-pre-commit"
+			"composer run-script phpcs-pre-push"
 		],
 		"!(*min).js": [
 			"eslint --fix"
