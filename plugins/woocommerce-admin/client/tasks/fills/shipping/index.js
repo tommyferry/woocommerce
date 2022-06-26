@@ -29,6 +29,7 @@ import Connect from '../../../dashboard/components/connect';
 import { getCountryCode } from '../../../dashboard/utils';
 import StoreLocation from '../steps/location';
 import ShippingRates from './rates';
+import { ShippingLabelPrinting } from './ShippingLabelPrinting/ShippingLabelPrinting';
 import { createNoticesFromResponse } from '../../../lib/notices';
 import './shipping.scss';
 
@@ -245,11 +246,18 @@ export class Shipping extends Component {
 		const steps = [
 			{
 				key: 'store_location',
-				label: __( 'Set store location', 'woocommerce' ),
-				description: __(
-					'The address from which your business operates',
-					'woocommerce'
-				),
+				label: shippingSmartDefaultsEnabled
+					? __( 'Set your store location', 'woocommerce' )
+					: __( 'Set store location', 'woocommerce' ),
+				description: shippingSmartDefaultsEnabled
+					? __(
+							'Add your store location to help us calculate shipping rates and the best shipping options for you. You can manage your store location again at any time in WooCommerce Settings General.',
+							'woocommerce'
+					  )
+					: __(
+							'The address from which your business operates',
+							'woocommerce'
+					  ),
 				content: (
 					<StoreLocation
 						createNotice={ createNotice }
@@ -257,6 +265,11 @@ export class Shipping extends Component {
 							updateAndPersistSettingsForGroup
 						}
 						settings={ settings }
+						buttonText={
+							shippingSmartDefaultsEnabled
+								? __( 'Save store location', 'woocommerce' )
+								: __( 'Continue', 'woocommerce' )
+						}
 						onComplete={ ( values ) => {
 							const country = getCountryCode(
 								values.countryState
@@ -312,28 +325,37 @@ export class Shipping extends Component {
 					: __( 'Enable shipping label printing', 'woocommerce' ),
 				description: labelPrintingDescription,
 				content: (
-					<Plugins
-						onComplete={ ( plugins, response ) => {
-							createNoticesFromResponse( response );
-							recordEvent( 'tasklist_shipping_label_printing', {
-								install: true,
-								plugins_to_activate: pluginsToActivate,
-							} );
-							this.completeStep();
-						} }
-						onError={ ( errors, response ) =>
-							createNoticesFromResponse( response )
-						}
-						onSkip={ () => {
-							recordEvent( 'tasklist_shipping_label_printing', {
-								install: false,
-								plugins_to_activate: pluginsToActivate,
-							} );
-							getHistory().push( getNewPath( {}, '/', {} ) );
-							onComplete();
-						} }
-						pluginSlugs={ pluginsToActivate }
-					/>
+					<>
+						<ShippingLabelPrinting />
+						<Plugins
+							onComplete={ ( plugins, response ) => {
+								createNoticesFromResponse( response );
+								recordEvent(
+									'tasklist_shipping_label_printing',
+									{
+										install: true,
+										plugins_to_activate: pluginsToActivate,
+									}
+								);
+								this.completeStep();
+							} }
+							onError={ ( errors, response ) =>
+								createNoticesFromResponse( response )
+							}
+							onSkip={ () => {
+								recordEvent(
+									'tasklist_shipping_label_printing',
+									{
+										install: false,
+										plugins_to_activate: pluginsToActivate,
+									}
+								);
+								getHistory().push( getNewPath( {}, '/', {} ) );
+								onComplete();
+							} }
+							pluginSlugs={ pluginsToActivate }
+						/>
+					</>
 				),
 				visible: pluginsToActivate.length,
 			},
