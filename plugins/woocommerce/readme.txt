@@ -171,6 +171,48 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 8.6.0 2024-XX-XX =
+= 8.6.0 2024-02-13 =
+
+**WooCommerce**
+
+* Fix - Added `__woocommerceNamespace` attribute, which resolved migration issues when transitioning from Products (Beta) block to Product Collection block. [#43130](https://github.com/woocommerce/woocommerce/pull/43130)
+* Fix - Fix: CYS - change heading color. [#43076](https://github.com/woocommerce/woocommerce/pull/43076)
+* Fix - Fix: Display rating stars instead of plain text for Cross-Sells products on the Cart block [#43069](https://github.com/woocommerce/woocommerce/pull/43069)
+* Fix - Fix: Pagination Block Visibility in Product Collection Block [#43132](https://github.com/woocommerce/woocommerce/pull/43132)
+* Fix - Fix bug when searching orders with a term starting with d, s, or f. [#43085](https://github.com/woocommerce/woocommerce/pull/43085)
+* Fix - Fixed the alignment issue of the Add to Cart button in WooCommerces Product Hero pattern. [#42913](https://github.com/woocommerce/woocommerce/pull/42913)
+* Fix - Fix incorrect wpBody margin top value set by TaskReminderBar component. [#43020](https://github.com/woocommerce/woocommerce/pull/43020)
+* Fix - Fix typo in text domain [#43054](https://github.com/woocommerce/woocommerce/pull/43054)
+* Fix - Store API: Add support to query `product_variations` by attribute slugs. [#42983](https://github.com/woocommerce/woocommerce/pull/42983)
+* Fix - Update a few Tracks events to be HPOS compatible. [#42879](https://github.com/woocommerce/woocommerce/pull/42879)
+* Fix - [Product Block Editor]" use proper flag to handle the Linked Product feature visibility [#43119](https://github.com/woocommerce/woocommerce/pull/43119)
+* Fix - [Product Block Editor]: update the conditions to hide the Cross-sells section [#43140](https://github.com/woocommerce/woocommerce/pull/43140)
+* Add - Add date_type parameter to analytics revenue stats endpoint [#42938](https://github.com/woocommerce/woocommerce/pull/42938)
+* Add - Add new product archive header template and hook into woocommerce_before_main_content
+* Add - Auto-inserts Mini Cart block into Tazza theme headers patterns and template parts. [#42900](https://github.com/woocommerce/woocommerce/pull/42900)
+* Add - Introduce a product type selection within the new product editor experience [#41823](https://github.com/woocommerce/woocommerce/pull/41823)
+* Add - Introduce the transient files engine [#42877](https://github.com/woocommerce/woocommerce/pull/42877)
+* Add - Product Collection - Add Price Range Filter [#42858](https://github.com/woocommerce/woocommerce/pull/42858)
+* Add - Product Collection: introduce the new flow of adding Product Collection block along with a preconfigured set of Collections: New Arrivals, Top Rated, Best Selling, On Sale, Featured [#42696](https://github.com/woocommerce/woocommerce/pull/42696)
+* Add - [Experimental] Refactor interactivity dropdown to remove FormTokenField. Also fix multi select for rating filter. [#43183](https://github.com/woocommerce/woocommerce/pull/43183)
+* Add - [Experimental] support passing a placeholder text to the interactivity Dropdown component. [#43211](https://github.com/woocommerce/woocommerce/pull/43211)
+* Add - [Product Block Editor]: add Linked product sections. First approach. [#43013](https://github.com/woocommerce/woocommerce/pull/43013)
+* Add - [Product Block Editor]: add Upsell advice [#43116](https://github.com/woocommerce/woocommerce/pull/43116)
+* Add - [Product Block Editor]: add `Linked products` tab [#43009](https://github.com/woocommerce/woocommerce/pull/43009)
+* Add - [Product Block Editor]: render empty state for the Cross-sells section [#43143](https://github.com/woocommerce/woocommerce/pull/43143)
+* Update - Adjust indents of old notice styles [#43031](https://github.com/woocommerce/woocommerce/pull/43031)
+* Update - Allow a log file line that has been highlighted to be un-highlighted [#43146](https://github.com/woocommerce/woocommerce/pull/43146)
+* Update - Ensure the site title can be updated by AI if the owner doesn't change it. Update the size of the images assigned to products and patterns for optimal performance. Allow usage of the same business description on multiple attempts of AI content generation. [#43086](https://github.com/woocommerce/woocommerce/pull/43086)
+* Update - Link cross-sells product images to corresponding product pages. [#42904](https://github.com/woocommerce/woocommerce/pull/42904)
+* Update - Update the neutral color palette in the Customize your Store Pattern Assembler from Tsubaki colors to black and white. [#43114](https://github.com/woocommerce/woocommerce/pull/43114)
+* Dev - Add Github reporter for Playwright CI runs [#42974](https://github.com/woocommerce/woocommerce/pull/42974)
+* Dev - Do not set WOOCOMMERCE_BLOCKS_PHASE in the build-zip.sh script, pass it when calling the script in relevant workflows. [#43169](https://github.com/woocommerce/woocommerce/pull/43169)
+* Dev - Migrate backend mini-cart tests from Puppeteer to Playwright. [#43093](https://github.com/woocommerce/woocommerce/pull/43093)
+* Dev - [Experimental] Use CheckboxList component in interactivity attribute filter [#43217](https://github.com/woocommerce/woocommerce/pull/43217)
+* Tweak - Add hook 'woocommerce_hpos_sync_ignored_order_props' to allow keys to be ignored during HPOS sync/verification. [#43123](https://github.com/woocommerce/woocommerce/pull/43123)
+* Performance - Load the gtag script used by Google Analytics asynchronously in WooCommerce Blocks. [#43040](https://github.com/woocommerce/woocommerce/pull/43040)
+* Enhancement - Ensure the offline modal is displayed whenever AI is unavailable and not just on the initial store setup. [#42949](https://github.com/woocommerce/woocommerce/pull/42949)
+* Enhancement - Increase product images width to 400px to have a better resolution [#43174](https://github.com/woocommerce/woocommerce/pull/43174)
+
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).
