@@ -12,7 +12,7 @@
  *
  * @see https://woo.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 8.6.0
+ * @version 8.8.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,7 +31,7 @@ do_action( 'woocommerce_before_main_content' );
 /**
  * Hook: woocommerce_shop_loop_header.
  *
- * @since 8.6.0
+ * @since 8.8.0
  *
  * @hooked woocommerce_product_taxonomy_archive_header - 10
  */
